@@ -1,0 +1,26 @@
+---
+- name: Copy publickey from controller
+  hosts: localhost
+  tasks:
+    - name: Copy publickey from controller
+      shell: "cat /root/.ssh/id_rsa.pub"
+      register: output_content
+
+
+- name: paste publickey from controller to client
+  hosts: web
+  tasks:
+    - name: paste publickey from controller to client
+      shell: 'cat output_content >> /root/.ssh/authorized_keys'
+      become: yes
+
+- name: ssh from controller to cleint without password
+  hosts: localhost
+  tasks:
+    - name: ssh from controller to cleint without password
+      shell: 'ssh web'
+      become: yes
+
+
+
+

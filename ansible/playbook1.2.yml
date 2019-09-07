@@ -1,0 +1,19 @@
+---
+- name: execute a date command on localhost
+  hosts: localhost
+  tasks:
+    - name: Execute a date command
+      command: date
+
+    - name: Execute uname command
+      command: uname -a
+    
+    - name: Execute a uptime
+      command: uptime
+
+    - name: Print no. of users on system
+      command: wc -l /etc/passwd
+
+    - name: Print no. of users
+      shell: 'cat /etc/passwd|wc -l'
+...
