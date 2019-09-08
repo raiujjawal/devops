@@ -1,0 +1,9 @@
+---
+- hosts: web
+  tasks:
+    - name: Check the uptime of server
+      action: chkuptime command=uptime
+      register: command
+      become: yes
+
+    - debug: msg="{{ command.msg }}"
